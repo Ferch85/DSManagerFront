@@ -7,6 +7,8 @@ import AuthLayout from './layout/AuthLayout';
 import Registrar from './Components/Registrar';
 import Main from './Components/Main';
 import { AdministrarClientes } from './Components/AdministrarClientes';
+import CargaArchivos from './Components/CargaArchivos';
+import AdminDS from './Components/AdminDS';
 
 
 
@@ -31,6 +33,8 @@ function App() {
         </Route>
         <Route path="/main" element={<Main />}>
             <Route index element={<AdministrarClientes />}/>   
+            <Route path="cargads" element={<CargaArchivos />}/>   
+            <Route path="adminds" element={<AdminDS />}/>   
         </Route>
 
       </Routes>

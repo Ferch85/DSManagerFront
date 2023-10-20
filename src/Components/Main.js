@@ -10,7 +10,7 @@ const Main = () => {
         <Header />
         <main className="container mx-auto mt-10">
                     <Outlet />
-        </main>        
+        </main> 
         <Footer />
         {/*Footer*/}
     </>

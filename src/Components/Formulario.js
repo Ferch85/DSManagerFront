@@ -15,7 +15,7 @@ const Formulario = () => {
 
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault();        
     }
 
     const { msg } = alerta;
