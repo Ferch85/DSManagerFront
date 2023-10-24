@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import JSZip from 'jszip';
+import Alerta from './Alerta';
+import clienteAxios from 'axios';
 
 
 
@@ -27,8 +29,13 @@ const CargaArchivos = () => {
     const [reg558, setReg558] = useState([]);
     const [reg701, setReg701] = useState([]);
     const [reg702, setReg702] = useState([]);
+    const [claveClienteG, setClaveClienteG] = useState('');
+    const [identificadorDS, setIdentificadorDs] = useState('');
+    const [archivoCarga, setArchivoCarga] = useState('');
+    const [alerta, setAlerta] = useState(false);
 
-    const archivoHandler = async (e) => {       
+    const archivoHandler = async (e) => {    
+        setArchivoCarga(e.target.value);
         const zipFile = e.target.files[0];
 
         if (!zipFile) return;
@@ -43,6 +50,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea501 = i.split("|");
                         const obj501 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea501[2].substring(0, 2)}-${linea501[0]}-${linea501[1]}`,
                             patente: linea501[0],
                             pedimento: linea501[1],
                             seccion: linea501[2],
@@ -87,6 +98,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea502 = i.split("|");
                         const obj502 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea502[2].substring(0, 2)}-${linea502[0]}-${linea502[1]}`,                            
                             patente: linea502[0],
                             pedimento: linea502[1],
                             seccion: linea502[2],
@@ -109,6 +124,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea503 = i.split("|");
                         const obj503 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea503[2].substring(0, 2)}-${linea503[0]}-${linea503[1]}`,                              
                             patente: linea503[0],
                             pedimento: linea503[1],
                             seccion: linea503[2],
@@ -128,6 +147,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea504 = i.split("|");
                         const obj504 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea504[2].substring(0, 2)}-${linea504[0]}-${linea504[1]}`,  
                             patente: linea504[0],
                             pedimento: linea504[1],
                             seccion: linea504[2],
@@ -147,6 +170,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea505 = i.split("|");
                         const obj505 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea505[2].substring(0, 2)}-${linea505[0]}-${linea505[1]}`,  
                             patente: linea505[0],
                             pedimento: linea505[1],
                             seccion: linea505[2],
@@ -179,6 +206,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea506 = i.split("|");
                         const obj506 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea506[2].substring(0, 2)}-${linea506[0]}-${linea506[1]}`,  
                             patente: linea506[0],
                             pedimento: linea506[1],
                             seccion: linea506[2],
@@ -198,6 +229,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea501 = i.split("|");
                         const obj501 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea501[2].substring(0, 2)}-${linea501[0]}-${linea501[1]}`,  
                             patente: linea501[0],
                             pedimento: linea501[1],
                             seccion: linea501[2],
@@ -219,6 +254,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea508 = i.split("|");
                         const obj508 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea508[2].substring(0, 2)}-${linea508[0]}-${linea508[1]}`,  
                             patente: linea508[0],
                             pedimento: linea508[1],
                             seccion: linea508[2],
@@ -246,6 +285,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea509 = i.split("|");
                         const obj509 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea509[2].substring(0, 2)}-${linea509[0]}-${linea509[1]}`,  
                             patente: linea509[0],
                             pedimento: linea509[1],
                             seccion: linea509[2],
@@ -267,6 +310,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea510 = i.split("|");
                         const obj510 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea510[2].substring(0, 2)}-${linea510[0]}-${linea510[1]}`,  
                             patente: linea510[0],
                             pedimento: linea510[1],
                             seccion: linea510[2],
@@ -288,6 +335,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea511 = i.split("|");
                         const obj511 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea511[2].substring(0, 2)}-${linea511[0]}-${linea511[1]}`,  
                             patente: linea511[0],
                             pedimento: linea511[1],
                             seccion: linea511[2],
@@ -308,6 +359,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea512 = i.split("|");
                         const obj512 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea512[2].substring(0, 2)}-${linea512[0]}-${linea512[1]}`,  
                             patente: linea512[0],
                             pedimento: linea512[1],
                             seccion: linea512[2],
@@ -333,6 +388,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea520 = i.split("|");
                         const obj520 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea520[2].substring(0, 2)}-${linea520[0]}-${linea520[1]}`,  
                             patente: linea520[0],
                             pedimento: linea520[1],
                             seccion: linea520[2],
@@ -358,6 +417,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea551 = i.split("|");
                         const obj551 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea551[2].substring(0, 2)}-${linea551[0]}-${linea551[1]}`,  
                             patente: linea551[0],
                             pedimento: linea551[1],
                             seccion: linea551[2],
@@ -401,6 +464,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea552 = i.split("|");
                         const obj552 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea552[2].substring(0, 2)}-${linea552[0]}-${linea552[1]}`,  
                             patente: linea552[0],
                             pedimento: linea552[1],
                             seccion: linea552[2],
@@ -422,6 +489,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea553 = i.split("|");
                         const obj553 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea553[2].substring(0, 2)}-${linea553[0]}-${linea553[1]}`,  
                             patente: linea553[0],
                             pedimento: linea553[1],
                             seccion: linea553[2],
@@ -446,6 +517,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea554 = i.split("|");
                         const obj554 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea554[2].substring(0, 2)}-${linea554[0]}-${linea554[1]}`,  
                             patente: linea554[0],
                             pedimento: linea554[1],
                             seccion: linea554[2],
@@ -468,6 +543,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea555 = i.split("|");
                         const obj555 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea555[2].substring(0, 2)}-${linea555[0]}-${linea555[1]}`,  
                             patente: linea555[0],
                             pedimento: linea555[1],
                             seccion: linea555[2],
@@ -496,6 +575,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea556 = i.split("|");
                         const obj556 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea556[2].substring(0, 2)}-${linea556[0]}-${linea556[1]}`,  
                             patente: linea556[0],
                             pedimento: linea556[1],
                             seccion: linea556[2],
@@ -518,6 +601,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea557 = i.split("|");
                         const obj557 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea557[2].substring(0, 2)}-${linea557[0]}-${linea557[1]}`,  
                             patente: linea557[0],
                             pedimento: linea557[1],
                             seccion: linea557[2],
@@ -540,6 +627,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea558 = i.split("|");
                         const obj558 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea558[2].substring(0, 2)}-${linea558[0]}-${linea558[1]}`,  
                             patente: linea558[0],
                             pedimento: linea558[1],
                             seccion: linea558[2],
@@ -561,6 +652,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea701 = i.split("|");
                         const obj701 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea701[2].substring(0, 2)}-${linea701[0]}-${linea701[1]}`,  
                             patente: linea701[0],
                             pedimento: linea701[1],
                             seccion: linea701[2],
@@ -588,6 +683,10 @@ const CargaArchivos = () => {
                     if(i !== "" && indexi !== 0 ) {
                         const linea702 = i.split("|");
                         const obj702 = {
+                            id__:'',
+                            clavecliente: claveClienteG,
+                            identificador: identificadorDS,
+                            pedimento_completo: `${linea702[2].substring(0, 2)}-${linea702[0]}-${linea702[1]}`,  
                             patente: linea702[0],
                             pedimento: linea702[1],
                             seccion: linea702[2],
@@ -610,59 +709,117 @@ const CargaArchivos = () => {
             }
         });
     }
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(reg501);
-        console.log(reg502);
-        console.log(reg502);
-        console.log(reg503);
-        console.log(reg504);
-        console.log(reg505);
-        console.log(reg506);
-        console.log(reg507);
-        console.log(reg508);
-        console.log(reg509);
-        console.log(reg510);
-        console.log(reg511);
-        console.log(reg512);
-        console.log(reg520);
-        console.log(reg551);
-        console.log(reg552);
-        console.log(reg553);
-        console.log(reg554);
-        console.log(reg555);
-        console.log(reg556);
-        console.log(reg557);
-        console.log(reg558);
-        console.log(reg701);
-        console.log(reg702);
+        if ([claveClienteG, identificadorDS, archivoCarga].includes("")) {
+            setAlerta({
+              msg: "Todos los campos sol obligatorios",
+              error: true,
+            });
+            return;
+        }
+        if(alerta) {
+            setAlerta(false)
+        }
+        const regGlobal = {
+            registros501: reg501,
+            registros502: reg502,
+            registros503: reg503,
+            registros504: reg504,
+            registros505: reg505,
+            registros506: reg506,
+            registros507: reg507,
+            registros508: reg508,
+            registros509: reg509,
+            registros510: reg510,
+            registros511: reg511,
+            registros512: reg512,
+            registros520: reg520,
+            registros551: reg551,
+            registros552: reg552,
+            registros553: reg553,
+            registros554: reg554,
+            registros555: reg555,
+            registros556: reg556,
+            registros557: reg557,
+            registros558: reg558,
+            registros701: reg701,
+            registros703: reg702,
+        }
+        
+        try {
+            const url = "http://localhost:3001/api";
+            const { data } = await clienteAxios.post(url + "/registros", {
+              regGlobal
+            });            
+            setAlerta({
+                msg: data.msg,
+                error: false
+            })
+          } catch (error) {
+            setAlerta({
+              msg: error.response.data.msg,
+              error: true,
+            });
+          }
 
         
     }
+    const identificadorHandler = (e) => {
+        setIdentificadorDs(e.target.value);
+    }
 
+    const claveClienteHandler = (e) => {
+        setClaveClienteG(e.target.value);
+    }
+    const msg = alerta;
+    console.log(msg)
   return (    
     <>
         <form onSubmit={submitHandler}>
-            <div>
+            
+            <div className="mb-6">
                 <label>
+                    Identificador:
+                </label>
+                <input
+                    type="text"
+                    placeholder="Identificador"
+                    className="border w-80 p-3 mt-3 ml-3 bg-gray-50 rounded-xl"
+                    onChange={identificadorHandler}
+                />            
+            </div>
+            <div className="mb-6">
+                <label>
+                    Clave Cliente:
+                </label>
+                <input
+                    type="text"
+                    placeholder="Clave de cliente"
+                    className="border w-80 p-3 mt-3 ml-3 bg-gray-50 rounded-xl"
+                    onChange={claveClienteHandler}
+                />                    
+            </div>
+            
+            <div className="flex flex-col">
+                <label className="w-full">
                     Carga arhivo .zip
                 </label>
                 <input 
                     type="file"
                     accept=".zip"
                     placeholder="Archivo datastage"
-                    className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"    
+                    className="border lg:w-full p-3 mt-3 bg-gray-50 rounded-xl md:w-auto"    
                     onChange={archivoHandler}                
                 />
                 <input
                     type="submit"
                     value="Cargar Archivo"
-                    className="bg-indigo-700 w-full py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800 md:w-auto"
-                />
-
-                
+                    className="bg-indigo-700 w-80 py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800 mb-6"
+                />                
             </div>
         </form>
+        {msg&&<Alerta alerta={alerta}/> }
     </>
   )
 }
