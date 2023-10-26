@@ -164,7 +164,7 @@ const CargaArchivos = () => {
                             return updatedRegs;
                         })
                     }
-                })
+                })                
               }else if(file.name.endsWith("505.asc")){
                 txtContent.split("\n").forEach((i, indexi) => {
                     if(i !== "" && indexi !== 0 ) {
@@ -367,14 +367,15 @@ const CargaArchivos = () => {
                             pedimento: linea512[1],
                             seccion: linea512[2],
                             patenteAduanaOriginal: linea512[3],
-                            secAduaneraDespO: linea512[4],
-                            documentoOriginal: linea512[5],
-                            fechaOperacionOrig: linea512[6],
-                            fraccionOriginal: linea512[7],
-                            unidadMedida: linea512[8],
-                            mercanciaDes: linea512[9],
-                            tipoPedimento: linea512[10],
-                            fechaPagoReal: linea512[11],
+                            pedimentoOriginal: linea512[4],
+                            secAduaneraDespO: linea512[5],
+                            documentoOriginal: linea512[6],
+                            fechaOperacionOrig: linea512[7],
+                            fraccionOriginal: linea512[8],
+                            unidadMedida: linea512[9],
+                            mercanciaDes: linea512[10],
+                            tipoPedimento: linea512[11],
+                            fechaPagoReal: linea512[12],
                         }
                         setReg512(prevRegs => {
                             const updatedRegs = [...prevRegs];
@@ -402,8 +403,9 @@ const CargaArchivos = () => {
                             numExterior: linea520[7],
                             cpDest: linea520[8],
                             municipioDest: linea520[9],
-                            paisDest: linea520[10],
-                            fechaPagoReal: linea520[11],
+                            clavePaisDest: linea520[10],
+                            paisDest: linea520[11],
+                            fechaPagoReal: linea520[12],
                         }
                         setReg520(prevRegs => {
                             const updatedRegs = [...prevRegs];
@@ -744,7 +746,7 @@ const CargaArchivos = () => {
             registros557: reg557,
             registros558: reg558,
             registros701: reg701,
-            registros703: reg702,
+            registros702: reg702,
         }
         
         try {
@@ -762,6 +764,9 @@ const CargaArchivos = () => {
               error: true,
             });
           }
+          setArchivoCarga("");
+          setClaveClienteG("");
+          setIdentificadorDs("");
 
         
     }
