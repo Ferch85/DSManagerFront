@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import JSZip from 'jszip';
 import Alerta from './Alerta';
 import clienteAxios from 'axios';
+import Sipnner from './Sipnner';
 
 
 
@@ -33,6 +34,18 @@ const CargaArchivos = () => {
     const [identificadorDS, setIdentificadorDs] = useState('');
     const [archivoCarga, setArchivoCarga] = useState('');
     const [alerta, setAlerta] = useState(false);
+    const [spinnerLoad, setSpinnerLoad] = useState(false);
+    const [idRegs, setIdRegs] = useState([]);
+
+    useEffect(() => {
+        clienteAxios.get('http://localhost:3001/api/regids')
+        .then(response => {          
+            setIdRegs(response.data)
+        })
+        .catch(error => {
+          console.error('Error al hacer la solicitud', error)
+        })
+      },[])
 
     const archivoHandler = async (e) => {    
         setArchivoCarga(e.target.value);
@@ -720,6 +733,7 @@ const CargaArchivos = () => {
             });
             return;
         }
+        setSpinnerLoad(true);
         if(alerta) {
             setAlerta(false)
         }
@@ -754,10 +768,16 @@ const CargaArchivos = () => {
             const { data } = await clienteAxios.post(url + "/registros", {
               regGlobal
             });            
+            
             setAlerta({
                 msg: data.msg,
                 error: false
-            })
+            })              
+            setTimeout(() => {
+               setAlerta(false) 
+            }, 3000);
+         
+
           } catch (error) {
             setAlerta({
               msg: error.response.data.msg,
@@ -767,18 +787,33 @@ const CargaArchivos = () => {
           setArchivoCarga("");
           setClaveClienteG("");
           setIdentificadorDs("");
+          setSpinnerLoad(false);
 
         
     }
     const identificadorHandler = (e) => {
         setIdentificadorDs(e.target.value);
+        
+    }
+    const validacionHandler = () => {
+        //VALIDAR CUANDO UN ID EXISTA EN LA BASE DE DATOS
+        if(idRegs.length > 0){
+            if (idRegs.includes(identificadorDS) === true){
+                setAlerta({
+                    msg: 'El identificador ya existe',
+                    error: true
+                })
+            }else{
+                setAlerta(false);
+            }
+        }
     }
 
     const claveClienteHandler = (e) => {
         setClaveClienteG(e.target.value);
     }
     const msg = alerta;
-    console.log(msg)
+    
   return (    
     <>
         <form onSubmit={submitHandler}>
@@ -790,8 +825,10 @@ const CargaArchivos = () => {
                 <input
                     type="text"
                     placeholder="Identificador"
+                    value={identificadorDS}
                     className="border w-80 p-3 mt-3 ml-3 bg-gray-50 rounded-xl"
-                    onChange={identificadorHandler}
+                    onChange={identificadorHandler} 
+                    onBlur={validacionHandler}                   
                 />            
             </div>
             <div className="mb-6">
@@ -801,6 +838,7 @@ const CargaArchivos = () => {
                 <input
                     type="text"
                     placeholder="Clave de cliente"
+                    value={claveClienteG}
                     className="border w-80 p-3 mt-3 ml-3 bg-gray-50 rounded-xl"
                     onChange={claveClienteHandler}
                 />                    
@@ -814,9 +852,11 @@ const CargaArchivos = () => {
                     type="file"
                     accept=".zip"
                     placeholder="Archivo datastage"
+                    value={archivoCarga}
                     className="border lg:w-full p-3 mt-3 bg-gray-50 rounded-xl md:w-auto"    
                     onChange={archivoHandler}                
                 />
+                {spinnerLoad&& <Sipnner />}
                 <input
                     type="submit"
                     value="Cargar Archivo"
@@ -824,7 +864,7 @@ const CargaArchivos = () => {
                 />                
             </div>
         </form>
-        {msg&&<Alerta alerta={alerta}/> }
+        {msg&&<Alerta alerta={alerta}/>}
     </>
   )
 }
