@@ -8,7 +8,7 @@ const Main = () => {
     <>
         {/*Header*/}
         <Header />
-        <main className="container mx-auto mt-10">
+        <main className="container mx-auto mt-5">
                     <Outlet />
         </main> 
         <Footer />
