@@ -9,12 +9,14 @@ import Main from './Components/Main';
 import { AdministrarClientes } from './Components/AdministrarClientes';
 import CargaArchivos from './Components/CargaArchivos';
 import AdminDS from './Components/AdminDS';
+import Facturas from './Paginas/Facturas';
+import AgregarFactura from './Paginas/AgregarFactura';
 
 
 
 function App() {
   const [data, setData] = useState([]);
-  useEffect(() => {
+  /*useEffect(() => {
     axios.get('http://localhost:3001/api/users')
     .then(response => {
       console.log(response.data)
@@ -23,7 +25,7 @@ function App() {
     .catch(error => {
       console.error('Error al hacer la solicitud', error)
     })
-  },[])
+  },[])*/
   return (
     <BrowserRouter>
       <Routes>
@@ -34,7 +36,10 @@ function App() {
         <Route path="/main" element={<Main />}>
             <Route index element={<AdministrarClientes />}/>   
             <Route path="cargads" element={<CargaArchivos />}/>   
-            <Route path="adminds" element={<AdminDS />}/>   
+            <Route path="adminds" element={<AdminDS />}/>               
+            <Route path="facturas" element={<Facturas />}/>
+            <Route path="agregar" element={<AgregarFactura />}/>
+            
         </Route>
 
       </Routes>
