@@ -1,10 +1,10 @@
-import React from 'react'
 import { useContext } from 'react'
+import ClienteContext from '../Context/ClienteProvider'
 
 
 const useClientes = () => {
   return (
-    <div>useClientes</div>
+    useContext(ClienteContext)
   )
 }
 

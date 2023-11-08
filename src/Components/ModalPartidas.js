@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
 
-const ModalPartidas = ({ isOpen, onClose, record, onSave }) => {
-    const [editedRecord, setEditedRecord] = useState(record);
+const ModalPartidas = ({ isOpen, onClose, record, onSave }) => {    
+    const [editedRecord, setEditedRecord] = useState(record);    
     
     const handleInputChange = (e) => {
         const {name, value} = e.target;    
-        name === 'valor_total' ? setEditedRecord({ ...editedRecord, [name]: this.costo_unitario * this.cantidad}) : setEditedRecord({ ...editedRecord, [name]: value });
-
-        console.log(editedRecord);
-        
+        setEditedRecord({ ...editedRecord, [name]: value });
+        console.log(record)        
     }
     
     if (!isOpen) {
@@ -17,7 +15,8 @@ const ModalPartidas = ({ isOpen, onClose, record, onSave }) => {
     }
 
     const handleSave = (e) => {
-        e.preventDefault();
+        e.preventDefault();        
+        console.log(editedRecord)
     }
     return (
         <>

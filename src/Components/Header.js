@@ -12,7 +12,7 @@ const Header = () => {
                 <Link to="/main/cargads" className="text-white text-sm uppercase font-bold">Carga Archivos</Link>
                 <Link to="/main/adminds" className="text-white text-sm uppercase font-bold">Visualizacion</Link>
                 <Link to="/main/facturas" className="text-white text-sm uppercase font-bold">Facturas</Link>
-        
+                <Link to="/main" className="text-white text-sm uppercase font-bold">Clientes</Link>        
                 <button
                     type="button"
                     className="text-white text-sm uppercase font-bold"

@@ -4,9 +4,9 @@ const EditModal = ({ isOpen, onClose, record, onSave }) => {
     const [editedRecord, setEditedRecord] = useState(record);
     const handleInputChange = (e) => {        
         const {name, value} = e.target;     
-        console.log(e.target)   
+        
         setEditedRecord({ ...editedRecord, [name]: value });   
-        console.log(editedRecord)
+        
     };
 
 
